@@ -1,0 +1,212 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== NAV BAR ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+nav a {
+  font-size: 1em;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  padding: 0 20px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff3333;
+}
+
+.map-container {
+  background: #fff;
+  border: 4px solid #222;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  width: 95vw;               /* almost full width of window */
+  height: 90vh;              /* takes up most vertical space */
+  margin: 70px auto 30px auto; /* space from navbar and bottom */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;          /* no scrollbars */
+  animation: fadeIn 1s ease forwards;
+}
+
+/* The SVG map automatically scales */
+.map-container svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;        /* keeps aspect ratio */
+  transform: scale(0.95);     /* small inward scaling for safe padding */
+  transform-origin: center center;
+  display: block;
+}
+
+/* Optional: smooth fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== STATES ===== */
+a path {
+  fill: #d4d4d4;
+  stroke: #333;
+  stroke-width: 0.8;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  transform-origin: center;
+}
+
+a:hover path {
+  fill: #ff3333;
+  transform: scale(1.03);
+}
+
+/* ===== TOOLTIP ===== */
+#tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  pointer-events: none;
+  font-size: 0.9em;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#tooltip.visible {
+  opacity: 1;
+}
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  nav {
+    height: 45px;
+  }
+
+  .map-container {
+    width: 100vw;
+    height: 80vh; /* slightly shorter on small screens */
+    margin-top: 60px;
+  }
+
+  svg {
+    width: 100%;
+    transform: scale(1) translateY(0);
+  }
+}
+.map-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-wrapper svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  transform: scale(0.9); /* add safe margin inside box */
+  transform-origin: center center;
+}
+.map-container {
+  background: #fff;
+  border: 4px solid #222;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  width: 95vw;                 /* full width */
+  height: 95vh;                /* tall enough to fit full map */
+  margin: 70px auto 30px auto; /* spacing from navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+/* MAIN HEADING */
+.page-heading {
+  position: relative;
+  width: 100vw;
+  margin: 70px 0 0 0; /* offset below navbar */
+  padding: 25px 0;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: #fff;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4, #10b981);
+  background-size: 200% auto;
+  border-top: 4px solid #111;
+  border-bottom: 2px solid #111; /* slightly thinner to blend with subheading */
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  animation: gradientMove 5s ease infinite;
+  z-index: 10;
+}
+
+/* SUBHEADING */
+.sub-heading {
+  position: relative;
+  width: 100vw;
+  margin: 0; /* no gap so borders touch */
+  padding: 18px 0;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(90deg, #10b981, #06b6d4, #3b82f6);
+  background-size: 200% auto;
+  border-top: 2px solid #111; /* touches previous bottom border */
+  border-bottom: 4px solid #111;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  animation: gradientMove 5s ease infinite reverse;
+}
+
+/* ANIMATION */
+@keyframes gradientMove {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .page-heading {
+    font-size: 1.6rem;
+    padding: 18px 0;
+    margin-top: 60px;
+  }
+
+  .sub-heading {
+    font-size: 1.2rem;
+    padding: 14px 0;
+  }
+}
