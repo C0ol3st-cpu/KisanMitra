@@ -209,4 +209,22 @@ a:hover path {
     font-size: 1.2rem;
     padding: 14px 0;
   }
+
+}
+/* ==== FOOTER ==== */
+.site-footer {
+  width: 100%;
+  background: #2f2f2f;
+  color: #e0e0e0;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-top: 2px solid #111;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.site-footer p {
+  margin: 0;
+  line-height: 1.5;
 }
